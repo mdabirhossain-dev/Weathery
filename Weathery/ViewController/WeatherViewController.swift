@@ -15,6 +15,7 @@ class WeatherViewController: UIViewController {
     let backgroundView = UIImageView()
     let locationButton = UIButton()
     let searchButton = UIButton()
+    let searchTextField = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,13 @@ extension WeatherViewController {
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         searchButton.tintColor = .label
+        
+        searchTextField.translatesAutoresizingMaskIntoConstraints = false
+        searchTextField.font = UIFont.preferredFont(forTextStyle: .title1)
+        searchTextField.placeholder = "Search"
+        searchTextField.textAlignment = .right
+        searchTextField.borderStyle = .roundedRect
+        searchTextField.backgroundColor = .systemFill
     }
     
     func layout() {
@@ -49,6 +57,7 @@ extension WeatherViewController {
         view.addSubview(backgroundView)
         view.addSubview(locationButton)
         view.addSubview(searchButton)
+        view.addSubview(searchTextField)
         
         NSLayoutConstraint.activate([
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -62,9 +71,15 @@ extension WeatherViewController {
             locationButton.heightAnchor.constraint(equalToConstant: 40),
             
             searchButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8), // multiplier 1 == 8 points
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchButton.trailingAnchor, multiplier: 1),
+//            searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8), // multiplier 1 == 8 points
             searchButton.widthAnchor.constraint(equalToConstant: 40),
             searchButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            searchTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchTextField.leadingAnchor.constraint(equalToSystemSpacingAfter: locationButton.trailingAnchor, multiplier: 1),
+            searchButton.leadingAnchor.constraint(equalToSystemSpacingAfter: searchTextField.trailingAnchor, multiplier: 1)
+            
         ])
         
     }
