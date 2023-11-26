@@ -52,13 +52,29 @@
 		100B92FC2B12D4DE00167487 /* Weathery */ = {
 			isa = PBXGroup;
 			children = (
-				100B92FD2B12D4DE00167487 /* AppDelegate.swift */,
-				100B93012B12D4DE00167487 /* WeatherViewController.swift */,
+				103AC3E12B131F8600362901 /* App */,
+				103AC3E22B131F9000362901 /* ViewController */,
 				100B93062B12D4DF00167487 /* Assets.xcassets */,
 				100B93082B12D4DF00167487 /* LaunchScreen.storyboard */,
 				100B930B2B12D4DF00167487 /* Info.plist */,
 			);
 			path = Weathery;
+			sourceTree = "<group>";
+		};
+		103AC3E12B131F8600362901 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				100B92FD2B12D4DE00167487 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		103AC3E22B131F9000362901 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				100B93012B12D4DE00167487 /* WeatherViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
