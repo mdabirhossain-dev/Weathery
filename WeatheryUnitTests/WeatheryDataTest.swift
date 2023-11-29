@@ -8,14 +8,51 @@
 import XCTest
 import Weathery
 
-final class WeatheryDataTest: XCTestCase {
 
+struct WeatherData: Codable {
+    var name: String
+    var main: Main
+    var weather: [Weather]
+}
+
+struct Main: Codable {
+    var temp: Double
+}
+
+struct Weather: Codable {
+    var id: Int
+    var description: String
+}
+
+
+final class WeatheryDataTest: XCTestCase {
+    
+    
+    
+    
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        
+        let json = """
+        {
+        "weather": [
+            {
+                "id": 804,
+                "description": "overcast cloud",
+          }
+        ],
+        "main": {
+            "temp": 10.55,
+        },
+        "name": "Category"
+        }
+        """
+        
+        let jsonData = json.data(using: .utf8)!
+        let weatherData = try! JSONDecoder().decode(WeatherData.self, from: jsonData)
+        
+        XCTAssertEqual(10.55, weatherData.main.temp)
+        XCTAssertEqual("Category", weatherData.name)
+        
     }
 
 }
