@@ -1,0 +1,12 @@
+{
+    "weather": [
+        {
+            "id": 804,
+            "description": "overcast cloud",
+        }
+    ],
+    "main": {
+        "temp": 10.55,
+    },
+    "name": "Category"
+}

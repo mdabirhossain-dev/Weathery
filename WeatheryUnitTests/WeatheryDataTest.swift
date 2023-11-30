@@ -27,9 +27,6 @@ struct Weather: Codable {
 
 final class WeatheryDataTest: XCTestCase {
     
-    
-    
-    
     func testExample() throws {
         
         let json = """
@@ -55,4 +52,25 @@ final class WeatheryDataTest: XCTestCase {
         
     }
 
+    
+    func testWeatherJSONExample() throws {
+        
+        guard let pathString = Bundle(for: type(of: self)).path(forResource: "WeatherJSON", ofType: "json") else {
+            fatalError("json not found")
+        }
+        
+        print("\n\n\(pathString)\n\n")
+        
+        guard let json = try? String(contentsOfFile: pathString, encoding: .utf8) else {
+            fatalError("Unable to convert JSON to string")
+        }
+        
+        let jsonData = json.data(using: .utf8)!
+        let weatherData = try! JSONDecoder().decode(WeatherData.self, from: jsonData)
+        
+        XCTAssertEqual(10.55, weatherData.main.temp)
+        XCTAssertEqual("Category", weatherData.name)
+        
+    }
+    
 }
